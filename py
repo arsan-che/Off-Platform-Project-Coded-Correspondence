@@ -129,3 +129,22 @@ def vigenere_encode(message, keyword):
       keyword_phrase += character
 
   encoded_message = ""
+# Encode each character using keyword
+  for i in range(len(message)):
+    if message[i] in alphabet:
+      old_character_index = alphabet.find(message[i])
+      offset_index = alphabet.find(keyword_phrase[i])
+      new_character = alphabet[(old_character_index - offset_index) % 26]
+      encoded_message += new_character
+    else:
+      encoded_message += character
+
+  return encoded_message
+
+# Vigenère message to encode and decode again
+vigenere_message_for_v = "thanks for teaching me all these cool ciphers! you really are the best!"
+keyword_for_v = "besties"
+
+# Print the encoded and then decoded message
+print(vigenere_encode(vigenere_message_for_v, keyword_for_v))
+print(vigenere_decode(vigenere_encode(vigenere_message_for_v, keyword_for_v), keyword_for_v))
