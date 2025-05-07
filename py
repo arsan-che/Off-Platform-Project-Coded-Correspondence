@@ -106,3 +106,26 @@ def vigenere_decode(message, keyword):
       decoded_message += message[i]
 
   return decoded_message
+# Vigenère encoded message
+vigenere_message = "txm srom vkda gl lzlgzr qpdb? fepb ejac! ubr imn tapludwy mhfbz cza ruxzal wg zztcgcexxch!"
+vigenere_keyword = "friends"
+
+# Decode the Vigenère message
+print(vigenere_decode(vigenere_message, vigenere_keyword))
+
+# Vigenère cipher encode function
+def vigenere_encode(message, keyword):
+  keyword_phrase = ""
+  keyword_index = 0
+
+  # Generate keyword phrase same way as decode
+  for character in message:
+    if keyword_index >= len(keyword):
+      keyword_index = 0
+    if character in alphabet:
+      keyword_phrase += keyword[keyword_index]
+      keyword_index += 1
+    else:
+      keyword_phrase += character
+
+  encoded_message = ""
