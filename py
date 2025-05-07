@@ -34,3 +34,28 @@ for character in message_for_v:
 
 # Print the encoded message
 print(translated_message_for_v)
+# Caesar cipher decode function
+def caesar_decode(message, offset):
+  decoded_message = ""
+
+  for character in message:
+    if character in alphabet:
+      character_value = alphabet.find(character)
+      decoded_message += alphabet[(character_value + offset) % 26]
+    else:
+      decoded_message += character
+
+  return decoded_message
+
+# Caesar cipher encode function
+def caesar_encode(message, offset):
+  encoded_message = ""
+
+  for character in message:
+    if character in alphabet:
+      character_value = alphabet.find(character)
+      encoded_message += alphabet[(character_value - offset) % 26]
+    else:
+      encoded_message += character
+
+  return encoded_message
