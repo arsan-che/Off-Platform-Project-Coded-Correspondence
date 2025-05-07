@@ -78,3 +78,31 @@ brute_force_message = "vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl tl hulhe
 for i in range(1, 26):
   print("Offset: {}".format(i))
   print("\t {}".format(caesar_decode(brute_force_message, i)))
+# Vigenère cipher decode function
+def vigenere_decode(message, keyword):
+  keyword_phrase = ""
+  keyword_index = 0
+
+  # Generate a repeated keyword phrase to match message length
+  for character in message:
+    if keyword_index >= len(keyword):
+      keyword_index = 0
+    if character in alphabet:
+      keyword_phrase += keyword[keyword_index]
+      keyword_index += 1
+    else:
+      keyword_phrase += character
+
+  decoded_message = ""
+
+  # Decode each character using corresponding character from keyword
+  for i in range(len(message)):
+    if message[i] in alphabet:
+      old_character_index = alphabet.find(message[i])
+      offset_index = alphabet.find(keyword_phrase[i])
+      new_character = alphabet[(old_character_index + offset_index) % 26]
+      decoded_message += new_character
+    else:
+      decoded_message += message[i]
+
+  return decoded_message
