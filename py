@@ -59,3 +59,22 @@ def caesar_encode(message, offset):
       encoded_message += character
 
   return encoded_message
+# Encrypted message using Caesar cipher with an offset of 10
+message_one = "jxu evviuj veh jxu iusedt cuiiqwu yi vekhjuud."
+
+# Decode message_one
+print(caesar_decode(message_one, 10))
+
+# Another message using Caesar cipher with a different offset
+message_two = "bqdradyuzs ygxfubxq omqemd oubtqde fa oapq kagd yqeemsqe ue qhqz yadq eqogdq!"
+
+# Decode message_two with offset 14
+print(caesar_decode(message_two, 14))
+
+# Brute-force Caesar decoding (try all 25 possible offsets)
+brute_force_message = "vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl tl hulhexmx. px'ee atox mh kxteer lmxi ni hnk ztfx by px ptgm mh dxxi hnk fxlltzxl ltyx."
+
+# Try every possible offset to find the correct decoding
+for i in range(1, 26):
+  print("Offset: {}".format(i))
+  print("\t {}".format(caesar_decode(brute_force_message, i)))
